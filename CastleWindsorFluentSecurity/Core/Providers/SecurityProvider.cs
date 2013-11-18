@@ -29,16 +29,39 @@ namespace CastleWindsorFluentSecurity
             return true;
         }
 
+        public static bool HasAnyRole(params string[] roles)
+        {
+            var context = SecurityContext.Current;
+
+            return context.CurrentUserIsAuthenticated() && context.CurrentUserRoles().Intersect(roles) != null;
+        }
+
         public static IEnumerable<string> GetCurrentUserRoles()
         {
             // TODO: Add service class to query for user's roles
-            return null;
+            return new string[] { "Super User" };
         }
 
         public static bool UserCredentialsAreValid(string userName, string password)
         {
             // TODO: Add service class to validate user's credentials
             return true;
+        }
+
+        public static void CreateSecuritySession(string userName, bool makePersistent = false)
+        {
+            using (var provider = AuthenticationProviderFactory<FormsAuthenticationProvider>.Create())
+            {
+                provider.SignIn(userName, makePersistent);
+            }
+        }
+
+        public static void DestroySecuritySession()
+        {
+            using (var provider = AuthenticationProviderFactory<FormsAuthenticationProvider>.Create())
+            {
+                provider.SignOut();
+            }
         }
 
 

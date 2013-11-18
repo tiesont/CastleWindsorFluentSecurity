@@ -40,13 +40,21 @@ namespace CastleWindsorFluentSecurity
                  */
 
                 configuration.For<ErrorsController>().Ignore();
-                configuration.For<Elmah.Mvc.ElmahController>().Ignore();
+                configuration.For<Elmah.Mvc.ElmahController>().RequireAnyRole("Super User");
+
+                /*
+                 * This is an example of a custom policy. Using the policy suggested here: http://www.fluentsecurity.net/wiki/Policies,
+                 * we can make the ELMAH controller available only when running under localhost. 
+                 * 
+                 * See Core/Policies/LocalOnlyPolicy.cs
+                 */
+                configuration.For<Elmah.Mvc.ElmahController>().AddPolicy<LocalOnlyPolicy>();
 
                 configuration.For<HomeController>().Ignore();
 
-                configuration.For<HomeController>(ac => ac.Restricted()).RequireAnyRole("Some Role");
+                configuration.For<HomeController>(ac => ac.Restricted()).RequireAnyRole("Super User");
 
-                configuration.For<AccountController>(ac => ac.LogIn()).Ignore();
+                configuration.For<AccountController>(ac => ac.LogIn(string.Empty)).Ignore();
                 configuration.For<AccountController>(ac => ac.ResetPassword()).Ignore();
                 configuration.For<AccountController>(ac => ac.UpdatePassword(string.Empty, string.Empty)).Ignore();
 

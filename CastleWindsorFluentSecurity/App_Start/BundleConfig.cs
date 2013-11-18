@@ -20,7 +20,7 @@ namespace CastleWindsorFluentSecurity
             bundles.Add(new ScriptBundle("~/bundles/cookie").Include(
                         "~/scripts/jquery.cookie.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            bundles.Add(new ScriptBundle("~/bundles/bootstrapjs").Include(
                         "~/scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/extensions").Include(

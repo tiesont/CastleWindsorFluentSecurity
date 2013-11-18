@@ -163,12 +163,17 @@
     <Compile Include="Controllers\ErrorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Core\Components\CoreController.cs" />
+    <Compile Include="Core\Components\Role.cs" />
+    <Compile Include="Core\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Core\Factories\AuthenticationProviderFactory.cs" />
     <Compile Include="Core\Factories\WindsorControllerFactory.cs" />
     <Compile Include="Core\Installers\AutoMapperInstaller.cs" />
     <Compile Include="Core\Installers\ControllersInstaller.cs" />
     <Compile Include="Core\Installers\ElmahInstaller.cs" />
     <Compile Include="Core\Installers\FluentSecurityInstaller.cs" />
     <Compile Include="Core\Policies\DenyAccessPolicyViolationHandler.cs" />
+    <Compile Include="Core\Policies\LocalOnlyPolicy.cs" />
+    <Compile Include="Core\Providers\AuthenticationProviders.cs" />
     <Compile Include="Core\Providers\SecurityProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +208,7 @@
     <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.blockUI.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.extensions.js" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.form.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -239,7 +245,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Core\Extensions\" />
     <Folder Include="Core\Profiles\" />
   </ItemGroup>
   <ItemGroup>
