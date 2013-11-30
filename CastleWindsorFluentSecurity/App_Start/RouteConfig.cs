@@ -12,6 +12,10 @@ namespace CastleWindsorFluentSecurity
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
+
+            routes.IgnoreRoute("scripts/{file}");
+            routes.IgnoreRoute("{file}.js");
 
             routes.MapRoute(
                 name: "Account",

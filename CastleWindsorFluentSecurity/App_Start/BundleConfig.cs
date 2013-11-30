@@ -32,7 +32,7 @@ namespace CastleWindsorFluentSecurity
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/content/css/bootstrap.css",
-                "~/content/fontawesome/font-awesome.css",
+                "~/content/font-awesome.css",
                 "~/content/css/site.css"));
         }
     }
