@@ -48,16 +48,16 @@ namespace CastleWindsorFluentSecurity
 
         public static void CreateSecuritySession(string userName, bool makePersistent = false)
         {
-            var ioc = new WindsorContainer();
-            var provider = ioc.Install(new AuthenticationProviderInstaller()).Resolve<IAuthenticationProvider>();
+            var containerAccessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var provider = containerAccessor.Container.Resolve<IAuthenticationProvider>();
             
             provider.SignIn(userName, makePersistent);
         }
 
         public static void DestroySecuritySession()
         {
-            var ioc = new WindsorContainer();
-            var provider = ioc.Install(new AuthenticationProviderInstaller()).Resolve<IAuthenticationProvider>();
+            var containerAccessor = HttpContext.Current.ApplicationInstance as IContainerAccessor;
+            var provider = containerAccessor.Container.Resolve<IAuthenticationProvider>();
             
             provider.SignOut();
         }

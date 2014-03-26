@@ -59,6 +59,14 @@ namespace CastleWindsorFluentSecurity
                 configuration.For<AccountController>(ac => ac.ResetPassword()).Ignore();
                 configuration.For<AccountController>(ac => ac.UpdatePassword(string.Empty, string.Empty)).Ignore();
 
+                /*
+                 *  Area config, using ISecurityProfile implementations and the ProfileScanner
+                 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
+                configuration.Scan(scan =>
+                {
+                    scan.AssembliesFromApplicationBaseDirectory();
+                    scan.LookForProfiles();
+                });
             });
         }
     }

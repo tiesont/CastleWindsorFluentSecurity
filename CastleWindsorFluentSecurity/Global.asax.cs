@@ -12,11 +12,13 @@ using Castle.Windsor.Installer;
 
 namespace CastleWindsorFluentSecurity
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : System.Web.HttpApplication, IContainerAccessor
     {
         private static IWindsorContainer _container;
+        public IWindsorContainer Container
+        {
+            get { return _container; }
+        }
 
         private static void BootstrapContainer()
         {
@@ -33,6 +35,7 @@ namespace CastleWindsorFluentSecurity
             AreaRegistration.RegisterAllAreas();
 
             SecurityConfig.RegisterSecurityRules();
+
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -94,6 +97,5 @@ namespace CastleWindsorFluentSecurity
             var rc = new RequestContext(wrapper, routeData);
             errorsController.Execute(rc);
         }
-
     }
 }
