@@ -1,7 +1,7 @@
 Castle Windsor + FluentSecurity
 ==========================================
 
-An ASP.NET MVC4 sample site, using [Castle Windsor](http://www.castleproject.org/) for DI and [FluentSecurity](http://www.fluentsecurity.net/) for authorization. 
+An ASP.NET MVC4 sample site, using [Castle Windsor](http://www.castleproject.org/) for DI and [FluentSecurity](https://github.com/kristofferahl/FluentSecurity) for authorization. 
 
 Castle Windsor is an Inversion of Control container available for .NET and Silverlight. FluentSecurity "provides a fluent interface for configuring security in ASP.NET MVC. No attributes or nasty xml, just pure love."
 
